@@ -5,7 +5,7 @@ There are three distinguished folders for:
 
 •	The software on Static and Dynamic Object Recognition from Video Sequences
 
-•	The homography H algorithm
+•	[The homography H algorithm](homography/README.md)
 
 •	Visualisation code for CesiumJS
 
