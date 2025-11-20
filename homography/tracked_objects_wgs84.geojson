@@ -1,0 +1,106 @@
+{
+  "type" : "FeatureCollection",
+  "features" : [ {
+    "type" : "Feature",
+    "properties" : {
+      "class_name" : "person",
+      "class_id" : 0,
+      "track_id" : 258,
+      "map_position.x" : 1049.0,
+      "map_position.y" : 183.0,
+      "image_rect.x_left" : 2221.703125,
+      "image_rect.y_top" : 610.4744873046875,
+      "image_rect.width" : 42.510986328125,
+      "image_rect.height" : 118.1658935546875
+    },
+    "geometry" : {
+      "type" : "Point",
+      "coordinates" : [ 13.352821867800083, 49.72746345508323 ]
+    }
+  }, {
+    "type" : "Feature",
+    "properties" : {
+      "class_name" : "person",
+      "class_id" : 0,
+      "track_id" : 259,
+      "map_position.x" : 1258.0,
+      "map_position.y" : 106.0,
+      "image_rect.x_left" : 3658.603515625,
+      "image_rect.y_top" : 1139.250244140625,
+      "image_rect.width" : 58.07373046875,
+      "image_rect.height" : 152.09521484375
+    },
+    "geometry" : {
+      "type" : "Point",
+      "coordinates" : [ 13.352913107262813, 49.727484393238065 ]
+    }
+  }, {
+    "type" : "Feature",
+    "properties" : {
+      "class_name" : "car",
+      "class_id" : 2,
+      "track_id" : 260,
+      "map_position.x" : 1546.0,
+      "map_position.y" : 108.0,
+      "image_rect.x_left" : 2336.30908203125,
+      "image_rect.y_top" : 735.8259887695312,
+      "image_rect.width" : 248.19482421875,
+      "image_rect.height" : 149.42340087890625
+    },
+    "geometry" : {
+      "type" : "Point",
+      "coordinates" : [ 13.353038435433106, 49.72748187628779 ]
+    }
+  }, {
+    "type" : "Feature",
+    "properties" : {
+      "class_name" : "car",
+      "class_id" : 2,
+      "track_id" : 261,
+      "map_position.x" : 1607.0,
+      "map_position.y" : 448.0,
+      "image_rect.x_left" : 2699.306884765625,
+      "image_rect.y_top" : 856.0340576171875,
+      "image_rect.width" : 255.561767578125,
+      "image_rect.height" : 146.2711181640625
+    },
+    "geometry" : {
+      "type" : "Point",
+      "coordinates" : [ 13.35306619255677, 49.72738409327601 ]
+    }
+  }, {
+    "type" : "Feature",
+    "properties" : {
+      "class_name" : "car",
+      "class_id" : 2,
+      "track_id" : 262,
+      "map_position.x" : 1639.0,
+      "map_position.y" : 987.0,
+      "image_rect.x_left" : 2613.62744140625,
+      "image_rect.y_top" : 682.8275146484375,
+      "image_rect.width" : 211.1884765625,
+      "image_rect.height" : 139.702880859375
+    },
+    "geometry" : {
+      "type" : "Point",
+      "coordinates" : [ 13.353082026833542, 49.72723131385127 ]
+    }
+  }, {
+    "type" : "Feature",
+    "properties" : {
+      "class_name" : "car",
+      "class_id" : 2,
+      "track_id" : 263,
+      "map_position.x" : 723.0,
+      "map_position.y" : 979.0,
+      "image_rect.x_left" : 2417.6904296875,
+      "image_rect.y_top" : 900.546875,
+      "image_rect.width" : 291.641357421875,
+      "image_rect.height" : 158.4012451171875
+    },
+    "geometry" : {
+      "type" : "Point",
+      "coordinates" : [ 13.35268448735329, 49.72723547940578 ]
+    }
+  } ]
+}
