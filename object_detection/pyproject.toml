@@ -1,0 +1,9 @@
+[tool.black]
+line-length = 100
+
+[tool.isort]
+line_length = 100
+profile = "black"
+known_third_party = ["wandb"]
+known_first_party = ["fgvc", "cvat_utils"]
+known_local_folder = ["utils", "train", "line_detection"]

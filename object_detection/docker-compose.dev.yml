@@ -1,0 +1,15 @@
+services:
+  db:
+    container_name: didymos-db-dev
+    restart: "no"
+    
+  api:
+    container_name: didymos-api-dev
+    restart: "no"
+    
+  tracking-worker:
+    build:
+      context: .
+      dockerfile: src/tracking_worker/Dockerfile_dev
+    container_name: didymos-tracking-worker-dev
+    restart: "no"

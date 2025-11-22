@@ -1,0 +1,88 @@
+services:
+  broker:
+    image: rabbitmq:3.10.22-management-alpine
+    container_name: didymos-message-broker
+    restart: always
+    environment:
+      TZ: Europe/Prague
+      RABBITMQ_DEFAULT_USER: user
+      RABBITMQ_DEFAULT_PASS: yDnzSs0NgpH3y0
+    expose:
+      - 15672  # management tool
+    labels:
+      com.didymos.group: "applications"
+
+  db:
+    image: postgres:16.3-alpine
+    container_name: didymos-db
+    restart: always
+    environment:
+      TZ: Europe/Prague
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: BsGy8nba0aPams
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "14150:5432"
+    labels:
+      com.didymos.group: "applications"
+
+  api:
+    build:
+      context: .
+      dockerfile: src/api/Dockerfile
+    container_name: didymos-api
+    restart: always
+    env_file:
+      - "./src/variables.env"
+    environment:
+      TZ: Europe/Prague
+    ports:
+      - "8080:8080"
+    volumes:
+      - shared-data:/data
+    depends_on:
+      - broker
+      - db
+      - tracking-worker
+    labels:
+      com.didymos.group: "applications"
+
+  tracking-worker:
+    build:
+      context: .
+      dockerfile: src/tracking_worker/Dockerfile
+    container_name: didymos-tracking-worker
+    restart: always
+    deploy:
+#      mode: replicated
+#      replicas: 1
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    env_file:
+      - "./src/variables.env"
+    environment:
+      TZ: Europe/Prague
+    volumes:
+#      - tracking-worker-data:/data
+      - shared-data:/data
+    depends_on:
+      - broker
+    labels:
+      com.didymos.group: "applications"
+
+volumes:
+  db-data:
+    labels:
+      com.didymos.group: "applications"
+  shared-data:
+    labels:
+      com.didymos.group: "applications"
+  tracking-worker-data:
+    labels:
+      com.didymos.group: "applications"

@@ -1,0 +1,17 @@
+# common requirements (used in commonlib)
+numpy
+pandas
+scipy
+Pillow
+PyYAML
+pika
+pydantic
+
+# Database
+psycopg2-binary
+SQLAlchemy
+
+# Back End Server
+fastapi
+uvicorn[standard]
+python-multipart
