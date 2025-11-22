@@ -3,9 +3,7 @@ Repository of codes and algorithms used by University of West Bohemia in Pilsen 
 
 There are three distinguished folders for:
 
-•	The software on Static and Dynamic Object Recognition from Video Sequences
-
+•	[The software on Static and Dynamic Object Recognition from Video Sequences](object_detection/README.md)
 •	[The homography transformation](homography/README.md)
-
 •	Visualisation code for CesiumJS
 
