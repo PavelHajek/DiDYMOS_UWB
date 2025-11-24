@@ -1,0 +1,18 @@
+# common requirements (used in commonlib)
+numpy
+pandas
+scipy
+Pillow
+PyYAML
+pika
+pydantic
+
+
+# Inference Worker
+joblib
+lapx
+ultralytics>=8.0.121
+matplotlib>=3.5.1
+opencv-python<4.3
+opencv-python-headless<4.3
+pykalman
