@@ -1,0 +1,104 @@
+<!--
+    Demo application for visualisation of vehicle locations for the project TACR CK03000179 "Dynamic digital street model for the usage of autonomous mobility in Pilsen"
+    (c) Department of Geomatics, University of West Bohemia in Pilsen, 2024
+    BSD 3-Clause License
+ -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Use correct character set. -->
+    <meta charset="utf-8" />
+    <!-- Tell IE to use the latest, best version. -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Make the application on mobile take up the full browser screen and disable user scaling. -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
+    />
+    <title>Didymos CZML TESTING Digital twin public</title>
+    <script src="/Cesium/Cesium.js"></script>
+    <script src="js/app.public.js"></script>
+    <script src="js/app_camobj.public.js"></script>
+    <style>
+      @import url(/Cesium/Widgets/widgets.css);
+      html,
+      body,
+      #cesiumContainer {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+    </style>      
+  </head>
+    
+  <body>
+    <div id="cesiumContainer"></div>
+    <script>
+        const start_date = "2024-07-18T13:59:00Z";
+        const end_date = "2024-07-18T14:08:00Z";
+        const startD = Date.parse(start_date);
+        const endD = Date.parse(end_date);
+        
+        const credits = new Cesium.Credit('Orthoimagery layer © ČÚZK, </br>Icons by <a href="https://www.svgrepo.com" target="_blank">SVG Repo</a>');
+        
+        const wmtsCUZK = new Cesium.WebMapTileServiceImageryProvider({
+            url : 'https://ags.cuzk.cz/arcgis1/rest/services/ORTOFOTO_WM/MapServer/WMTS',
+            layer : 'ORTOFOTO_WM',
+            style : 'default',
+            format : 'image/jpgpng',
+            tileMatrixSetID : 'default028mm',
+            maximumLevel: 19,
+            credit : credits
+        });
+        
+        const viewer = new Cesium.Viewer("cesiumContainer",  {
+          selectionIndicator : false,
+          baseLayerPicker: false,
+          shouldAnimate: true,
+          geocoder: false,
+          sceneModePicker: false, 
+          baseLayer: new Cesium.ImageryLayer(wmtsCUZK),
+      });
+
+        const crossroad = viewer.entities.add({
+            position: Cesium.Cartesian3.fromDegrees(13.352867364053399, 49.72727619311252),
+            description: "Central point for crossroad",
+            point: {
+                pixelSize: 5,
+                color: Cesium.Color.YELLOW,
+                heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+            },
+        });
+        
+        /* 
+            Tested location of camera
+        */
+        viewer.camera.setView({
+            destination: new Cesium.Cartesian3(4020043.1087007374, 954026.490771704, 4843237.037871801),
+            orientation: {
+                heading: 6.283185307179562,
+                pitch: -0.7854092058122073,
+                roll: 6.283185307179582
+            }
+        });
+
+        /*
+            Load locations of trams
+        */
+        let URL = "./data/demo-traffic_vehicles_cits.json"
+        let czml_new = getJSON(URL);
+        const dataSourcePromise = Cesium.CzmlDataSource.load(czml_new);
+        viewer.dataSources.add(dataSourcePromise);
+        
+        /*
+            Load locations of objects from camera
+        */
+        let URLcamObj = "./data/demo-camera_objects.json";
+        let czml_camobj = getCameraObjectJSON(URLcamObj);
+        const dataSourcePromise2 = Cesium.CzmlDataSource.load(czml_camobj);
+        viewer.dataSources.add(dataSourcePromise2);         
+    </script>
+  </body>
+</html>
