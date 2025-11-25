@@ -5,5 +5,5 @@ There are three distinguished folders for:
 
 •	[The software on Static and Dynamic Object Recognition from Video Sequences](object_detection/README.md)
 •	[The homography transformation](homography/README.md)
-•	Visualisation code for CesiumJS
+•	[Visualisation code for CesiumJS](Cesium_visualisation_app/README.md)
 
